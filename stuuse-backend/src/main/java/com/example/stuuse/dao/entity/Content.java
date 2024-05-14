@@ -1,0 +1,40 @@
+package com.example.stuuse.dao.entity;
+
+import com.example.stuuse.dao.enums.TypeOfContent;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "content")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Content {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "content_id")
+    private Long contentId;
+
+    @Column(name = "type_of_content")
+    private TypeOfContent typeOfContent;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "discount_code")
+    private String discountCode;
+
+    @Column(name = "description")
+    private String description;
+}
+
