@@ -103,7 +103,7 @@ INSERT INTO content(title, address, description, image, discount_code, type_of_c
 1. Go to `stuuse-frontend` folder in CMD or Linux Shell.
 2. Input command `npm install react-scripts --save` to install node_modules folder.
 
-## Step 3: Run the application
+### Step 3: Run the application
 
 1. Input command `npm start` to run the application.
 
