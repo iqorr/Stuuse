@@ -32,7 +32,7 @@ public class User {
     @Column(name = "account_type")
     private TypeOfUser accType;
 
-    @Column(name = "is_verified")
+    @Column(name = "is_verified", columnDefinition = "boolean defult false")
     private boolean isVerified;
 
 }
