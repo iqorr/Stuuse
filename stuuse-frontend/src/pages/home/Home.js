@@ -3,50 +3,55 @@ import './Home.css';
 import Navigation from '../../components/navigation/Navigation';
 import Footer from '../../components/footer/Footer';
 import FreeHours from '../../components/freeHour/FreeHours';
+import Events from "../../components/events/Events";
 
 
 function Home() {
   return (
-    <main >
+      <main>
 
-      <Navigation></Navigation>
-     
-      <div id="free-hours" className="pb-1">
-          <div class="free-hours-header mb-3">
-            <span>Najbliższe godziny wolne</span>
-          </div>
-          <div class="container">
-          <div class="row m-5">
-            <div class="col-lg-6">
-              <div class="container">
-                <div class="row">
-                    <div class="hours-block-header col-sm-12">
-                      <span>Rektorskie</span>
-                    </div>
-                    <FreeHours typeOfFreeHour={'RECTOR_HOUR'}/>
-                </div>
+          <Navigation></Navigation>
+
+          <div id="free-hours" className="pb-1">
+              <div className="free-hours-header mb-3">
+                  <span>Najbliższe godziny wolne</span>
               </div>
-            
-            </div>
-            <div class="col-lg-6">
-              <div class="container">
-                <div class="row">
-                    <div class="hours-block-header col-sm-12">
-                      <span>Dziekańskie</span>
-                    </div>
-                    <FreeHours typeOfFreeHour={'DEAN_HOUR'}/>
-                </div>
+              <div className="container">
+                  <div className="row m-5">
+                      <div className="col-lg-6">
+                          <div className="container">
+                              <div className="row">
+                                  <div className="hours-block-header col-sm-12">
+                                      <span>Rektorskie</span>
+                                  </div>
+                                  <FreeHours typeOfFreeHour={'RECTOR_HOUR'}/>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div className="col-lg-6">
+                          <div className="container">
+                              <div className="row">
+                                  <div className="hours-block-header col-sm-12">
+                                      <span>Dziekańskie</span>
+                                  </div>
+                                  <FreeHours typeOfFreeHour={'DEAN_HOUR'}/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
-      </div>
+
+          <div className="events-header">
+              <span>Wydarzenia uczelniane</span>
+          </div>
+          <Events typeOfContent={'EVENT'}/>
 
 
+          <Footer/>
 
-      <Footer/>
-
-    </main>
+      </main>
   );
 }
 

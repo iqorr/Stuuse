@@ -1,0 +1,44 @@
+.card-interaction{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-interaction button{
+    width: 25%;
+    height: 50px;
+}
+
+.green-button{
+    background-color: lime;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.red-button{
+    background-color: red;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.events-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #1FA1FF;
+}
+
+
+.events-header span{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.events-bod{
+    background-color: red;
+    height: 30vh;
+}
