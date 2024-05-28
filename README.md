@@ -47,9 +47,9 @@ Run the XAMPP control panel and start the following services:
 3. Add sample data to the tables by executing the following SQL code:
 ```sql
 -- Tworzenie tabel
-CREATE TABLE content (content_id bigint NOT NULL auto_increment, address VARCHAR(255), description VARCHAR(255), discount_code VARCHAR(255), image VARCHAR(255), title VARCHAR(255), type_of_content tinyint CHECK (type_of_content BETWEEN 0 AND 1), PRIMARY KEY (content_id));
-CREATE TABLE free_hours (hour_id bigint NOT NULL auto_increment, date datetime(6), duration VARCHAR(255), faculty VARCHAR(255), type_of_free_hour tinyint CHECK (type_of_free_hour BETWEEN 0 AND 1), PRIMARY KEY (hour_id));
-CREATE TABLE users (user_id bigint NOT NULL auto_increment, account_type tinyint CHECK (account_type BETWEEN 0 AND 2), email VARCHAR(255), is_verified bit, login VARCHAR(255), password VARCHAR(255), PRIMARY KEY (user_id));
+CREATE TABLE content (content_id bigint NOT NULL auto_increment, address VARCHAR(255), description VARCHAR(255), discount_code VARCHAR(255), dislikes INTEGER DEFAULT 0, image VARCHAR(255), is_verified BOOLEAN DEFAULT false, likes INTEGER DEFAULT 0, title VARCHAR(255), type_of_content tinyint CHECK (type_of_content BETWEEN 0 AND 1), PRIMARY KEY (content_id));
+CREATE TABLE free_hours (hour_id bigint NOT NULL auto_increment, date DATETIME(6), duration VARCHAR(255), faculty VARCHAR(255), is_verified BOOLEAN DEFAULT FALSE, type_of_free_hour tinyint CHECK (type_of_free_hour BETWEEN 0 AND 1), PRIMARY KEY (hour_id));
+CREATE TABLE users (user_id bigint NOT NULL auto_increment, account_type tinyint CHECK (account_type BETWEEN 0 AND 2), email VARCHAR(255), is_verified BOOLEAN DEFAULT false, login VARCHAR(255), password VARCHAR(255), PRIMARY KEY (user_id));
 
 -- Dodawanie godzin rektorskich
 INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-03-16', '11:00 - 12:00', NULL, 0);
