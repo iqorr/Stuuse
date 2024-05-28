@@ -37,7 +37,7 @@ public class Content {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "is_verified", columnDefinition = "boolean defult false")
+    @Column(name = "is_verified", columnDefinition = "boolean default false")
     private boolean isVerified;
 
     @Column(name = "likes", columnDefinition = "integer default 0")

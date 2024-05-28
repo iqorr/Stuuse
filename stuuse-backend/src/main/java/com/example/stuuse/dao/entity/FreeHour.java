@@ -38,7 +38,7 @@ public class FreeHour {
     @Column(name = "faculty")
     private String faculty;
 
-    @Column(name = "is_verified", columnDefinition = "boolean defult false")
+    @Column(name = "is_verified", columnDefinition = "boolean default false")
     private boolean isVerified;
 
 }
