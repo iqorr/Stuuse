@@ -19,7 +19,7 @@ html, body, main, *{
 }
 
 
-.free-hours-header{
+.section-header{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@ html, body, main, *{
   background-color: #1FA1FF;
 }
 
-.free-hours-header span{
+.section-header span{
   font-family: "Ubuntu", sans-serif;
   font-size: 24px;
   font-weight: bold;
@@ -67,8 +67,17 @@ html, body, main, *{
 }
 
 
+/* events */
 
+#events{
+  background-color: #DFF5FF;
+}
 
+/* offers */
+
+#offers{
+  background-color: #DFF5FF;
+}
 
 
 

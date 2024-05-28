@@ -4,6 +4,7 @@ import Navigation from '../../components/navigation/Navigation';
 import Footer from '../../components/footer/Footer';
 import FreeHours from '../../components/freeHour/FreeHours';
 import Events from "../../components/events/Events";
+import Offers from "../../components/offers/Offers";
 
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
           <Navigation></Navigation>
 
           <div id="free-hours" className="pb-1">
-              <div className="free-hours-header mb-3">
+              <div className="section-header mb-3">
                   <span>Najbliższe godziny wolne</span>
               </div>
               <div className="container">
@@ -43,11 +44,21 @@ function Home() {
               </div>
           </div>
 
-          <div className="events-header">
-              <span>Wydarzenia uczelniane</span>
+          <div id="events" className="pb-1">
+            <div className="section-header">
+                <span>Wydarzenia uczelniane</span>
+            </div>
+            <Events typeOfContent={'EVENT'}/>
           </div>
-          <Events typeOfContent={'EVENT'}/>
 
+          <div id="offers" className="pb-1">
+            <div className="section-header">
+                <span>Oferty specjalne</span>
+            </div>
+
+            <Offers typeOfContent={'OFFER'}/>
+
+          </div>
 
           <Footer/>
 
