@@ -1,0 +1,54 @@
+.card {
+  width: 18rem;
+}
+
+.card-body {
+  background-color: #59B8FC;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.card-description {
+  text-align: center;
+}
+
+.card-interaction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.offer-code {
+  font-weight: bold;
+}
+
+.card-interaction button {
+  width: 15%;
+}
+
+.green-button {
+  background-color: lime;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.red-button {
+  background-color: red;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+
+.card-img-top {
+  height: 200px; 
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
