@@ -7,8 +7,11 @@ function App() {
     return (
         <Router>    
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home />} />d
                 <Route path="/login" element={<Login />} />
+                {/*<Route path="/myProfile" element={<PrivateRoute />}>*/}
+                {/*    <Route path="/myProfile" element={<MyProfile />} />*/}
+                {/*</Route>*/}
             </Routes>
         </Router>
     );
