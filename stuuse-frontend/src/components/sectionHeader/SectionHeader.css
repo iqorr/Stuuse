@@ -1,0 +1,17 @@
+.section-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #1FA1FF;
+  }
+  
+  .section-header span{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+
+  

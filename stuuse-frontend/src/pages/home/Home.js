@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import FreeHours from '../../components/freeHour/FreeHours';
 import Events from "../../components/events/Events";
 import Offers from "../../components/offers/Offers";
+import Logout from "../../components/logout/Logout";
 
 
 function Home() {
