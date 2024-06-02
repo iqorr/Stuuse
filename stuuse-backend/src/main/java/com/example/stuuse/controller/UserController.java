@@ -33,6 +33,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
+    @GetMapping("/check")
+    public Boolean checkUserExists(@RequestParam String login, @RequestParam String email) {
+        return userService.userExists(login, email);
+    }
+
     @PostMapping (consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.saveUser(user));

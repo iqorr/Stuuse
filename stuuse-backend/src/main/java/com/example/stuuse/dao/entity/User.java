@@ -20,6 +20,12 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "lastname")
+    private String lastname;
+
     @Column(name = "login")
     private String login;
 
