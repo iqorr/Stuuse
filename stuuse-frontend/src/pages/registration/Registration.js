@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Registration.css'; 
+import './Registration.css';
 import Footer from '../../components/footer/Footer';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../components/images/logo_transparent.png';
 import Button from '../../components/button/Button';
 import SectionHeader from '../../components/sectionHeader/SectionHeader';
@@ -12,6 +12,7 @@ const Registration = () => {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [accountType, setAccountType] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
   const navigate = useNavigate();
 
@@ -35,21 +36,90 @@ const Registration = () => {
     setPassword(event.target.value);
   };
 
+  const handleAccountTypeChange = (event) => {
+    setAccountType(event.target.value);
+  };
+
   const handleAcceptTermsChange = (event) => {
     setAcceptTerms(event.target.checked);
   };
 
-  const handleSubmit = (event) => {
+  const checkUserExists = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/users/check?login=${encodeURIComponent(login)}&email=${encodeURIComponent(email)}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      return response.json();
+    } catch (error) {
+      console.error('Failed to check user existence:', error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 6) {
+      alert('Hasło musi mieć co najmniej 6 znaków.');
       return;
     }
     if (!acceptTerms) {
       alert('Musisz wyrazić zgodę na przetwarzanie danych osobowych.');
       return;
     }
-    navigate("/login");
+
+    const exists = await checkUserExists();
+    if (exists) {
+      alert('Użytkownik o podanym loginie lub emailu już istnieje.');
+      return;
+    }
+
+    const userData = {
+      name,
+      lastname,
+      login,
+      email,
+      password,
+      accType: accountType
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+
+      const text = await response.text();
+
+      if (!response.ok) {
+        try {
+          const data = JSON.parse(text);
+          alert(data.message || 'Błąd rejestracji. Spróbuj ponownie.');
+        } catch {
+          alert('Błąd rejestracji. Nieprawidłowa odpowiedź serwera.');
+        }
+        return;
+      }
+
+      if (!text) {
+        alert('Rejestracja zakończona sukcesem, ale brak odpowiedzi od serwera.');
+        navigate("/login");
+        return;
+      }
+
+      alert('Rejestracja zakończona sukcesem! Logowanie będzie możliwe po zweryfikowaniu konta przez administratora.');
+      navigate("/login");
+    } catch (error) {
+      console.error('Error connecting to the server:', error);
+      alert('Wystąpił problem z połączeniem z serwerem: ' + error.message);
+    }
   };
+
 
   return (
     <main>
@@ -93,9 +163,10 @@ const Registration = () => {
 
           <div className="form-group">
             <label htmlFor="accountType" className='mb-3 mt-3'>Typ konta</label>
-            <select id="accountType" className="form-control" required>
-              <option value="f3">Firma Trzecia</option>
-              <option value="pł">Pracownik PŁ</option>
+            <select id="accountType" className="form-control" value={accountType} onChange={handleAccountTypeChange} required>
+              <option value="">Wybierz typ konta</option>
+              <option value="THIRD_PARTY_COMPANY">Firma Trzecia</option>
+              <option value="PL_EMPLOYEE">Pracownik PŁ</option>
             </select>
           </div>
 
@@ -109,7 +180,7 @@ const Registration = () => {
           <Button type="submit" text="ZAREJESTRUJ" />
         </form>
       </div>
-      
+
       <Footer/>
     </main>
   );

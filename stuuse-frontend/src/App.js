@@ -13,7 +13,6 @@ function App() {
                 {/*<Route path="/myProfile" element={<PrivateRoute />}>*/}
                 {/*    <Route path="/myProfile" element={<MyProfile />} />*/}
                 {/*</Route>*/}
-                <Route path="/" element={<Home />} />
                 <Route path="/registration" element={<Registration />} />
             </Routes>
         </Router>
