@@ -29,6 +29,10 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException(String.format("User of ID %s does not exists.", id)));
     }
 
+    public User getUserByLogin(String login) {
+        return userRepository.findByLogin(login).orElseThrow(() -> new UserNotFoundException("User not found with login: " + login));
+    }
+
     public boolean userExists(String login, String email) {
         List<User> users = userRepository.findByLoginOrEmail(login, email);
         return !users.isEmpty();
