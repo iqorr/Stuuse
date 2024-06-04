@@ -1,0 +1,12 @@
+.btn-logout{
+    color: black;
+    transition: .3;
+}
+
+.bi-box-arrow-left{
+    font-size: 28px;
+}
+  
+.btn-logout:hover{
+    color: #1FA1FF;
+}

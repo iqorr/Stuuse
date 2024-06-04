@@ -2,6 +2,8 @@ package com.example.stuuse.controller;
 
 import com.example.stuuse.dao.entity.AuthenticationRequest;
 import com.example.stuuse.dao.entity.AuthenticationResponse;
+import com.example.stuuse.dao.entity.User;
+import com.example.stuuse.service.UserService;
 import com.example.stuuse.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class AuthenticationController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest request) throws Exception {
         Authentication authentication = authenticationManager.authenticate(
@@ -30,7 +35,9 @@ public class AuthenticationController {
 
         final UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         final String jwt = jwtUtil.generateToken(userDetails);
+        User user = userService.getUserByLogin(userDetails.getUsername());
+        Long userId = user.getUserId();
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userId));
     }
 }

@@ -62,7 +62,7 @@ const Navigation = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <Link className='nav-link' to="/myProfile">Mój profil</Link>
+                        <Link className='nav-link' to="/profile">Mój profil</Link>
                     </li>
                 </ul>
             </div>
