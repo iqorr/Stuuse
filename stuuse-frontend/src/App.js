@@ -3,6 +3,8 @@ import Home from './pages/home/Home.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login.js';
 import Registration from './pages/registration/Registration.js';
+import Profile from './pages/profile/Porfile.js';
+
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 {/*    <Route path="/myProfile" element={<MyProfile />} />*/}
                 {/*</Route>*/}
                 <Route path="/registration" element={<Registration />} />
+                <Route path="/profile" element={<Profile />} />
+           
             </Routes>
         </Router>
     );
