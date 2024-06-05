@@ -48,7 +48,8 @@ function Events({ typeOfContent }) {
                                     width: '280px',
                                     height: '150px',
                                     objectFit: 'cover',
-                                    marginBottom: '50px'
+                                    marginBottom: '50px',
+                                    marginRight: '10px'
                                 }}/>
                                 <div className="card-interaction">
                                 <button className="button green-button"><FontAwesomeIcon icon={faHeart}/></button>
