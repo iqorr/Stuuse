@@ -49,7 +49,7 @@ Run the XAMPP control panel and start the following services:
 -- Tworzenie tabel
 CREATE TABLE content (content_id bigint NOT NULL auto_increment, address VARCHAR(255), description VARCHAR(255), discount_code VARCHAR(255), dislikes INTEGER DEFAULT 0, image VARCHAR(255), is_verified BOOLEAN DEFAULT false, likes INTEGER DEFAULT 0, title VARCHAR(255), type_of_content tinyint CHECK (type_of_content BETWEEN 0 AND 1), PRIMARY KEY (content_id));
 CREATE TABLE free_hours (hour_id bigint NOT NULL auto_increment, date DATETIME(6), duration VARCHAR(255), faculty VARCHAR(255), is_verified BOOLEAN DEFAULT FALSE, type_of_free_hour tinyint CHECK (type_of_free_hour BETWEEN 0 AND 1), PRIMARY KEY (hour_id));
-CREATE TABLE users (user_id bigint NOT NULL auto_increment, account_type tinyint CHECK (account_type BETWEEN 0 AND 2), email VARCHAR(255), is_verified BOOLEAN DEFAULT false, login VARCHAR(255), password VARCHAR(255), PRIMARY KEY (user_id));
+CREATE TABLE users (user_id bigint NOT NULL auto_increment, account_type tinyint CHECK (account_type BETWEEN 0 AND 2), email VARCHAR(255), is_verified BOOLEAN DEFAULT false, lastname VARCHAR(255), login VARCHAR(255), name VARCHAR(255), password VARCHAR(255), PRIMARY KEY (user_id))
 
 -- Dodawanie godzin rektorskich
 INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-03-16', '11:00 - 12:00', NULL, 0);
@@ -62,9 +62,17 @@ INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-
 INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-05-22', '12:00 - 16:00', 'WEEIA', 1);
 
 -- Dodawanie uzytkownikow
-INSERT INTO users(account_type, email, login, password, is_verified) VALUES(2, 'admin@stuuse.pl', 'admin', 'admin', 1);
-INSERT INTO users(account_type, email, login, password, is_verified) VALUES(0, 'pl_employee@stuuse.pl', 'employee1', 'Qwerty123!', 1);
-INSERT INTO users(account_type, email, login, password, is_verified) VALUES(1, 'third_party_company@stuuse.pl', 'company1', 'Abcdef123!', 0);
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(2, 'Jan', 'Kowalski', 'admin@stuuse.pl', 'admin', '$2a$12$4azcmZl.vSa8cnuZ224wsulg3fSxmYVVnJ1KRc.6c8KiTkJVG6KNq', 1);
+-- Haslo do uzytkownika admin: admin
+
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(0, 'Adam', 'Nowak', 'pl_employee@stuuse.pl', 'employee1', '$2a$12$OMcTGUU9fJu8nsKDM6KAZOuawOZ9wa7zM/kAIOgFnpTlC.xEwcVtq', 1);
+-- Haslo do uzytkownika employee1: Employee1
+
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Kacper', 'Nowacki', 'third_party_company@stuuse.pl', 'company1', '$2a$12$1XU9cBkrxY1a4wAfEMlMDOdy8wj4Fcv.AnLeFPMD8.aOagDMMsdD2', 1);
+-- Haslo do uzytkownika company1: Company1
+
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Adam', 'Adamowski', 'third_party_company2@stuuse.pl', 'company2', '$2a$12$wwtzMh9kQ.auRnZxRNnszu31ZLcygzE73l/5wfJLxb5I.gPb93UHq', 0);
+-- Haslo do uzytkownika company2: Company2
 
 -- Dodawanie wydarzen
 INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
