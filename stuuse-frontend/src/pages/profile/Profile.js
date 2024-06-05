@@ -59,6 +59,37 @@ const Profile = () => {
         fetchUserData();
     }, []);
 
+    const renderButtons = () => {
+        switch (userData.accountType) {
+            case 'Pracownik PŁ':
+                return (
+                    <>
+                        {/* <Link to="/addHour">
+                            <Button text="DODAJ GODZINĘ" />
+                        </Link> */}
+                        <Link to="/addContent">
+                            <Button text="DODAJ TREŚĆ" />
+                        </Link>
+                    </>
+                );
+            case 'Administrator':
+                return (
+                    <div></div>
+                    // <Link to="/admin">
+                    //     <Button text="ZARZĄDZAJ" />
+                    // </Link>
+                );
+            case 'Firma trzecia':
+                return (
+                    <Link to="/addContent">
+                        <Button text="DODAJ TREŚĆ" />
+                    </Link>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <main>
           <nav className="navbar py-3">
@@ -112,7 +143,7 @@ const Profile = () => {
                   <span>{userData.verified}</span>
               </div>
 
-              <Button text="ZARZĄDZAJ"/>
+              {renderButtons()}
           </div>
 
           <Footer/>

@@ -1,0 +1,122 @@
+
+
+
+/* navbar */
+
+*{
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.navbar {
+    height: 82px;
+    background-color: #BBB9B5 ;
+    
+  } 
+  
+  
+  /* login */
+  
+  .add-content-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #1FA1FF;
+  }
+  
+  
+  
+  .add-content-header span{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  
+  
+  .add-content-body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    background-color: #DFF5FF;
+    padding: 5vh 5vw 5vh 5vw;
+  }
+  
+  .add-content-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    
+  }
+  
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .radio-label {
+    display: block; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+  }
+  
+
+  .radio-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20%; 
+  }
+  
+  .radio-option {
+    text-align: center;
+  }
+  
+  .radio-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  
+  ::placeholder{
+    text-align: center;
+  }
+  
+ 
+
+
+.input-centered {
+  text-align: center;
+}
+
+
+
+
+/* footer */
+
+.footer-text {
+    margin: 0; 
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    .footer-text {
+      font-size: 20px; 
+    }
+  
+    
+  }
+
+
+  
