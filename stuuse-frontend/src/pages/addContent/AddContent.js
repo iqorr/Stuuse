@@ -7,7 +7,6 @@ import Button from '../../components/button/Button';
 import SectionHeader from '../../components/sectionHeader/SectionHeader';
 
 const AddContent = () => {
-
   const [userData, setUserData] = useState({
     name: '',
     lastname: '',
@@ -58,6 +57,14 @@ const AddContent = () => {
   }, []);
 
   const [contentType, setContentType] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    address: '',
+    image: '',
+    discountCode: '',
+    description: ''
+  });
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userData.accountType === 'Firma trzecia') {
@@ -69,6 +76,51 @@ const AddContent = () => {
 
   const handleContentTypeChange = (event) => {
     setContentType(event.target.value);
+  };
+
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const contentData = {
+      typeOfContent: contentType === 'university-event' ? 0 : 1,
+      title: formData.title,
+      address: formData.address,
+      image: formData.image,
+      discountCode: formData.discountCode,
+      description: formData.description
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/content', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(contentData)
+      });
+      if (!response.ok) throw new Error('Network response was not ok');
+      const result = await response.json();
+
+      setFormData({
+        title: '',
+        address: '',
+        image: '',
+        discountCode: '',
+        description: ''
+      });
+
+      alert('Pomyślnie dodano zawartość');
+    } catch (error) {
+      console.error('Error adding content:', error);
+    }
   };
 
   return (
@@ -85,7 +137,7 @@ const AddContent = () => {
       <SectionHeader text="Dodaj zawartość"/>
 
       <div className='add-content-body'>
-        <form className='add-content-form'>
+        <form className='add-content-form' onSubmit={handleSubmit}>
          
           <div className="form-group mt-3">
             <div className="radio-group">
@@ -117,33 +169,68 @@ const AddContent = () => {
           </div>
 
           <div className="form-group">
-            <input type="text" id="content-name" className="form-control input-centered" placeholder="Tytuł" required/>
-          </div>
-
-          <div className="form-group">
-            <input type="text" id="content-address" className="form-control input-centered" placeholder="Adres" required/>
-          </div>
-
-          <div className="form-group">
-            <input type="text" id="content-img" className="form-control input-centered" placeholder="Zdjęcie" required/>
+            <input 
+              type="text" 
+              id="title" 
+              className="form-control input-centered" 
+              placeholder="Tytuł" 
+              required 
+              value={formData.title}
+              onChange={handleInputChange}
+            />
           </div>
 
           <div className="form-group">
             <input 
               type="text" 
-              id="content-promo-code" 
+              id="address" 
+              className="form-control input-centered" 
+              placeholder="Adres" 
+              required 
+              value={formData.address}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <input 
+              type="text" 
+              id="image" 
+              className="form-control input-centered" 
+              placeholder="Zdjęcie" 
+              required 
+              value={formData.image}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <input 
+              type="text" 
+              id="discountCode" 
               className="form-control input-centered" 
               placeholder="Kod zniżkowy" 
               required 
+              value={formData.discountCode}
+              onChange={handleInputChange}
               disabled={userData.accountType === 'Pracownik PŁ'} 
             />
           </div>
 
           <div className="form-group">
-            <input type="text" id="content-description" className="form-control input-centered" placeholder="Opis" required/>
+            <input 
+              type="text" 
+              id="description" 
+              className="form-control input-centered" 
+              placeholder="Opis" 
+              required 
+              value={formData.description}
+              onChange={handleInputChange}
+            />
           </div>
 
-          <Button text="DODAJ" />
+          <Button type={"button"} text="DODAJ" onClick={handleSubmit}/>
+          
         </form>
       </div>
       
