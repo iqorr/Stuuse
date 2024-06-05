@@ -78,7 +78,7 @@ const Login = () => {
         </form>
 
         <div className='mt-3 new-account'>
-          <span>Nie masz konta?</span><Link className='register-link' to="/registration"> utwórz je</Link>
+          <span>Nie masz konta?</span><Link className='register-link' to="/registration"> Utwórz je</Link>
         </div>
       </div>
 

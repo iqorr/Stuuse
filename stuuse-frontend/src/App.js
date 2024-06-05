@@ -5,7 +5,7 @@ import Login from './pages/login/Login.js';
 import Registration from './pages/registration/Registration.js';
 import Profile from './pages/profile/Profile.js';
 import PrivateRoute from "./components/routes/PrivateRoute";
-
+import AddContent from "./pages/addContent/AddContent.js";
 
 function App() {
     return (
@@ -15,6 +15,9 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<PrivateRoute />}>
                     <Route path="/profile" element={<Profile />} />
+                </Route>
+                <Route path="/addContent" element={<PrivateRoute />}>
+                    <Route path="/addContent" element={<AddContent />} />
                 </Route>
                 <Route path="/registration" element={<Registration />} />
             </Routes>

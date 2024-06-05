@@ -29,7 +29,7 @@ const Profile = () => {
         const userId = localStorage.getItem('userId');
         if (!userId) {
             console.error("No user ID found. Please log in.");
-            return; // Optionally redirect to login page
+            return; 
         }
 
         const fetchUserData = async () => {
@@ -58,6 +58,37 @@ const Profile = () => {
 
         fetchUserData();
     }, []);
+
+    const renderButtons = () => {
+        switch (userData.accountType) {
+            case 'Pracownik PŁ':
+                return (
+                    <>
+                        {/* <Link to="/addHour">
+                            <Button text="DODAJ GODZINĘ" />
+                        </Link> */}
+                        <Link to="/addContent">
+                            <Button text="DODAJ TREŚĆ" />
+                        </Link>
+                    </>
+                );
+            case 'Administrator':
+                return (
+                    <div></div>
+                    // <Link to="/admin">
+                    //     <Button text="ZARZĄDZAJ" />
+                    // </Link>
+                );
+            case 'Firma trzecia':
+                return (
+                    <Link to="/addContent">
+                        <Button text="DODAJ TREŚĆ" />
+                    </Link>
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <main>
@@ -112,7 +143,7 @@ const Profile = () => {
                   <span>{userData.verified}</span>
               </div>
 
-              <Button text="ZARZĄDZAJ"/>
+              {renderButtons()}
           </div>
 
           <Footer/>
