@@ -29,7 +29,7 @@ const Profile = () => {
         const userId = localStorage.getItem('userId');
         if (!userId) {
             console.error("No user ID found. Please log in.");
-            return; // Optionally redirect to login page
+            return;
         }
 
         const fetchUserData = async () => {

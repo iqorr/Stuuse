@@ -26,6 +26,15 @@ const Navigation = () => {
         }
     }
 
+    const checkIfLogin = () => {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            return 'Zaloguj się';
+        } else {
+            return 'Mój profil';
+        }
+    };
+
     useEffect(() => {
         window.addEventListener('resize', handleResize);
         return () => {
@@ -62,7 +71,7 @@ const Navigation = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <Link className='nav-link' to="/profile">Mój profil</Link>
+                        <Link className='nav-link' to="/profile">{checkIfLogin()}</Link>
                     </li>
                 </ul>
             </div>
