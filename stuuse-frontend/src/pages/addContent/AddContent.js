@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../components/images/logo_transparent.png';
 import Button from '../../components/button/Button';
 import SectionHeader from '../../components/sectionHeader/SectionHeader';
+import Logout from '../../components/logout/Logout'
 
 const AddContent = () => {
   const [userData, setUserData] = useState({
@@ -131,6 +132,7 @@ const AddContent = () => {
             <img src={logo} alt="Logo" width="35" height="35" className="d-inline-block align-text-top"/>
             <span className="ms-2">Stuuse</span>
           </Link>
+          <Logout />
         </div>
       </nav>
 
@@ -197,7 +199,7 @@ const AddContent = () => {
               type="text" 
               id="image" 
               className="form-control input-centered" 
-              placeholder="Zdjęcie" 
+              placeholder="Zdjęcie (link url)" 
               required 
               value={formData.image}
               onChange={handleInputChange}
@@ -229,7 +231,7 @@ const AddContent = () => {
             />
           </div>
 
-          <Button type={"button"} text="DODAJ" onClick={handleSubmit}/>
+          <Button type="submit" text="DODAJ" onClick={handleSubmit}/>
           
         </form>
       </div>
