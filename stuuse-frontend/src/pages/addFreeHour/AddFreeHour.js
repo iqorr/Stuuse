@@ -94,7 +94,7 @@ const AddHour = () => {
     };
 
     const validateDuration = (duration) => {
-        const durationRegex = /^([01]\d|2[0-3]):([0-5]\d)-([01]\d|2[0-3]):([0-5]\d)$/;
+        const durationRegex = /^([01]\d|2[0-3]):([0-5]\d) - ([01]\d|2[0-3]):([0-5]\d)$/;
         return durationRegex.test(duration);
     };
 
@@ -104,7 +104,7 @@ const AddHour = () => {
         if (!validateDuration(formData.duration)) {
             setErrors((prevState) => ({
                 ...prevState,
-                duration: 'Czas trwania musi być w formacie HH:mm-HH:mm'
+                duration: 'Czas trwania musi być w formacie HH:mm - HH:mm'
             }));
             return;
         }
@@ -185,7 +185,7 @@ const AddHour = () => {
 
                     <div className="form-group">
                         <label htmlFor="duration">Czas trwania</label>
-                        <input placeholder="HH:mm-HH:MM"type="text" id="duration" className="form-control input-centered" required value={formData.duration} onChange={handleInputChange} />
+                        <input placeholder="HH:MM - HH:MM"type="text" id="duration" className="form-control input-centered" required value={formData.duration} onChange={handleInputChange} />
                         {errors.duration && <small className="text-danger">{errors.duration}</small>}
                     </div>
 
