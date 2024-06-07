@@ -6,6 +6,7 @@ import Registration from './pages/registration/Registration.js';
 import Profile from './pages/profile/Profile.js';
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AddContent from "./pages/addContent/AddContent.js";
+import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
 
 function App() {
     return (
@@ -18,6 +19,9 @@ function App() {
                 </Route>
                 <Route path="/addContent" element={<PrivateRoute />}>
                     <Route path="/addContent" element={<AddContent />} />
+                </Route>
+                <Route path="/addFreeHour" element={<PrivateRoute />}>
+                    <Route path="/addFreeHour" element={<AddFreeHour />} />
                 </Route>
                 <Route path="/registration" element={<Registration />} />
             </Routes>

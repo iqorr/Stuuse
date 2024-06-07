@@ -1,0 +1,101 @@
+/* navbar */
+
+*{
+    font-family: "Open Sans", sans-serif;
+}
+
+.navbar {
+    height: 82px;
+    background-color: #BBB9B5 ;
+
+}
+
+
+/* login */
+
+.add-hour-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #1FA1FF;
+}
+
+.add-hour-header span{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.add-hour-body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 71vh;
+    background-color: #DFF5FF;
+    padding: 5vh 5vw 5vh 5vw;
+}
+
+.add-hour-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+::placeholder{
+    text-align: center;
+}
+
+.input-centered {
+    text-align: center;
+}
+
+.add-hour-form label {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20%;
+}
+
+.radio-option {
+    text-align: center;
+}
+
+.radio-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* footer */
+
+.footer-text {
+    margin: 0;
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    .footer-text {
+        font-size: 20px;
+    }
+}

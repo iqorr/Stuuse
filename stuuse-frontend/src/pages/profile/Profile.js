@@ -64,9 +64,9 @@ const Profile = () => {
             case 'Pracownik PŁ':
                 return (
                     <>
-                        {/* <Link to="/addHour">
+                        <Link to="/addFreeHour">
                             <Button text="DODAJ GODZINĘ" />
-                        </Link> */}
+                        </Link>
                         <Link to="/addContent">
                             <Button text="DODAJ TREŚĆ" />
                         </Link>
