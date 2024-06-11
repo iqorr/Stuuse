@@ -177,7 +177,7 @@ const Registration = () => {
             <input type="checkbox" id="acceptTerms" className="form-check-input" checked={acceptTerms} onChange={handleAcceptTermsChange} required/>
           </div>
 
-          <Button type={"button"} text="ZAREJESTRUJ" />
+          <Button type={"submit"} text="ZAREJESTRUJ" onClick={handleSubmit} />
         </form>
       </div>
 
