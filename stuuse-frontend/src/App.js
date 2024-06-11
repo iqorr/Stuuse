@@ -8,7 +8,8 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import AddContent from "./pages/addContent/AddContent.js";
 import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
 import PermissionsRoute from "./components/routes/PermissionsRoute";
-import AdminPanel from "./pages/administration_Panel/AdminPanel";
+import AdminPanel from "./pages/administrationPanel/AdminPanel";
+
 
 
 
