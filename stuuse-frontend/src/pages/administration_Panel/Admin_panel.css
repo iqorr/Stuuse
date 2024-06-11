@@ -136,6 +136,8 @@
 
 
 /* Responsive Styles */
+
+
 @media (min-width: 600px) {
     .card {
         flex-wrap: nowrap;
@@ -147,7 +149,6 @@
     }
 
     .actions {
-        flex-basis: auto;
         justify-content: flex-end;
     }
 }
@@ -174,5 +175,28 @@
 
     .card {
         padding: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .card-1, .card-2, .card-3 {
+        width: 45%; /* Zmniejszenie szerokości dla mniejszych ekranów */
+
+    }
+}
+
+@media (max-width: 600px) {
+
+
+    .card-1, .card-2, .card-3 {
+        width: 100%; /* Pełna szerokość dla bardzo małych ekranów */
+        flex-direction: row;
+    }
+
+    .approve, .reject {
+        font-size: 20px;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }
