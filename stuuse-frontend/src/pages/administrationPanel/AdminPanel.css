@@ -44,7 +44,7 @@
     border-radius: 10px;
 }
 
-.card {
+.content-card {
     background-color: #1FA1FF;
     margin: 5px 0;
     padding: 10px;
@@ -65,7 +65,7 @@
     margin-bottom: 20px; /* odstęp na dole sekcji */
 }
 
-.card-1, .card-2, .card-3 {
+.free-hour-card {
     background-color: #1FA1FF;
     padding: 10px;
     border-radius: 10px;
@@ -110,7 +110,7 @@
     float: right;
 }
 
-.card > .actions {
+.content-card > .actions {
     display: flex;
 }
 
@@ -137,7 +137,7 @@
 
 /* Responsive Styles */
 @media (min-width: 600px) {
-    .card {
+    .content-card {
         flex-wrap: nowrap;
     }
 
@@ -172,7 +172,7 @@
         margin: 20px auto;
     }
 
-    .card {
+    .content-card {
         padding: 20px;
     }
 }
