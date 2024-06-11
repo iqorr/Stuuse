@@ -10,8 +10,6 @@ import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
 import PermissionsRoute from "./components/routes/PermissionsRoute";
 import AdminPanel from "./pages/administrationPanel/AdminPanel";
 
-
-
 function App() {
     return (
         <Router>
