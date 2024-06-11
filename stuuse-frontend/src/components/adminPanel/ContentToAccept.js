@@ -19,6 +19,63 @@ const ContentToAccept = () => {
             });
     }, []);
 
+    const handleApprove = contentId => {
+        const cont = content.find(c => c.contentId === contentId);
+        if (!cont) {
+            console.error('Content not found');
+            return;
+        }
+
+        const updatedData = {
+            ...cont,
+            verified: true
+        };
+
+        const url = `http://localhost:8080/api/content/${contentId}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(updatedData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update content status');
+                }
+                return response.json();
+            })
+            .then(() => {
+                const updatedContent = content.map(c =>
+                    c.contentId === contentId ? { ...c, verified: true } : c
+                );
+                setContent(updatedContent);
+            })
+            .catch(error => {
+                console.error('Error updating content:', error);
+            });
+    };
+
+    const handleReject = contentId => {
+        const url = `http://localhost:8080/api/content/${contentId}`;
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete content');
+                }
+                setContent(content.filter(c => c.contentId !== contentId));
+            })
+            .catch(error => {
+                console.error('Error deleting content:', error);
+            });
+    };
+
     const unverifiedContent = content.filter(cont => !cont.verified);
 
     return (
@@ -28,8 +85,8 @@ const ContentToAccept = () => {
                     {content.title}, {content.address}
                 </div>
                 <div className="actions">
-                    <button className="approve">✓</button>
-                    <button className="reject">✗</button>
+                    <button className="approve" onClick={() => handleApprove(content.contentId)}>✓</button>
+                    <button className="reject" onClick={() => handleReject(content.contentId)}>✗</button>
                 </div>
             </div>
         ))
