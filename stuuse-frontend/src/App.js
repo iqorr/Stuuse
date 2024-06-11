@@ -7,12 +7,13 @@ import Profile from './pages/profile/Profile.js';
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AddContent from "./pages/addContent/AddContent.js";
 import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
+import AdminPanel from './pages/administrationPanel/AdminPanel.js';
 
 function App() {
     return (
         <Router>    
             <Routes>
-                <Route path="/" element={<Home />} />d
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<PrivateRoute />}>
                     <Route path="/profile" element={<Profile />} />
@@ -24,6 +25,10 @@ function App() {
                     <Route path="/addFreeHour" element={<AddFreeHour />} />
                 </Route>
                 <Route path="/registration" element={<Registration />} />
+
+                <Route path="/admin" element={<AdminPanel />} />
+                
+
             </Routes>
         </Router>
     );
