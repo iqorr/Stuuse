@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from '../../components/navigation/Navigation'
-import './Admin_panel.css';
+import './AdminPanel.css';
 import Footer from '../../components/footer/Footer';
 import UsersToAccept from "../../components/adminPanel/UsersToAccept";
 import ContentToAccept from "../../components/adminPanel/ContentToAccept";
