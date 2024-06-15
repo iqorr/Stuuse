@@ -7,23 +7,32 @@ import Profile from './pages/profile/Profile.js';
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AddContent from "./pages/addContent/AddContent.js";
 import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
+import PermissionsRoute from "./components/routes/PermissionsRoute";
+
+
 
 function App() {
     return (
-        <Router>    
+        <Router>
             <Routes>
-                <Route path="/" element={<Home />} />d
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<PrivateRoute />}>
-                    <Route path="/profile" element={<Profile />} />
-                </Route>
-                <Route path="/addContent" element={<PrivateRoute />}>
-                    <Route path="/addContent" element={<AddContent />} />
-                </Route>
-                <Route path="/addFreeHour" element={<PrivateRoute />}>
-                    <Route path="/addFreeHour" element={<AddFreeHour />} />
-                </Route>
                 <Route path="/registration" element={<Registration />} />
+
+                <Route element={<PrivateRoute />}>
+                    <Route path="/profile" element={<Profile />} />
+                    <Route element={<PermissionsRoute allowedRoles={['ADMINISTRATOR']} />}>
+                        {/*<Route path="/admin" element={<AdminPanel />} />*/}
+                    </Route>
+                    <Route element={<PermissionsRoute allowedRoles={['PL_EMPLOYEE']} />}>
+                        <Route path="/addContent" element={<AddContent />} />
+                        <Route path="/addFreeHour" element={<AddFreeHour />} />
+                    </Route>
+                    <Route element={<PermissionsRoute allowedRoles={['THIRD_PARTY_COMPANY']} />}>
+                        <Route path="/addContent" element={<AddContent />} />
+                    </Route>
+                </Route>
+
             </Routes>
         </Router>
     );
