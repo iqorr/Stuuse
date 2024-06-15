@@ -76,20 +76,22 @@ const FreeHoursToAccept = ({ typeOfFreeHour }) => {
             });
     };
 
-    const unverifiedFreeHours = freeHours.filter(hour => !hour.verified && hour.typeOfFreeHour === typeOfFreeHour);
+    const unverifiedFreeHours = freeHours.filter(hour => hour.typeOfFreeHour === typeOfFreeHour);
 
     return (
         unverifiedFreeHours.map(freeHour => (
-        <div className="free-hour-card">
-            <div className="hour-info2">
-                {freeHour.faculty}<br/>{new Date(freeHour.date).toLocaleDateString()}<br/>
-                {freeHour.duration}
+            <div className="free-hour-card">
+                <div className="hour-info2">
+                    {freeHour.faculty}<br/>{new Date(freeHour.date).toLocaleDateString()}<br/>
+                    {freeHour.duration}
+                </div>
+                <div className="actions">
+                    {!freeHour.verified && (
+                        <button className="approve" onClick={() => handleApprove(freeHour.hourId)}>✓</button>
+                    )}
+                    <button className="reject" onClick={() => handleReject(freeHour.hourId)}>✗</button>
+                </div>
             </div>
-            <div className="actions">
-            <button className="approve" onClick={() => handleApprove(freeHour.hourId)}>✓</button>
-            <button className="reject" onClick={() => handleReject(freeHour.hourId)}>✗</button>
-            </div>
-        </div>
         ))
     );
 }

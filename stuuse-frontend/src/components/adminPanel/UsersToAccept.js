@@ -82,16 +82,16 @@ const UsersToAccept = () => {
             });
     };
 
-    const unverifiedUsers = users.filter(user => !user.verified);
-
     return (
-        unverifiedUsers.map(user => (
+        users.map(user => (
             <div className="content-card">
                 <div className="user-info">
                     {user.name} {user.lastname} "{accountTypeMapping[user.accType]}" {user.email}
                 </div>
                 <div className="actions">
-                    <button className="approve" onClick={() => handleApprove(user.userId)}>✓</button>
+                    {!user.verified && (
+                        <button className="approve" onClick={() => handleApprove(user.userId)}>✓</button>
+                    )}
                     <button className="reject" onClick={() => handleReject(user.userId)}>✗</button>
                 </div>
             </div>

@@ -76,17 +76,17 @@ const ContentToAccept = () => {
             });
     };
 
-    const unverifiedContent = content.filter(cont => !cont.verified);
-
     return (
-        unverifiedContent.map(content => (
+        content.map(c => (
             <div className="content-card">
                 <div className="event-info">
-                    {content.title}, {content.address}
+                    {c.title}, {c.address}
                 </div>
                 <div className="actions">
-                    <button className="approve" onClick={() => handleApprove(content.contentId)}>✓</button>
-                    <button className="reject" onClick={() => handleReject(content.contentId)}>✗</button>
+                    {!c.verified && (
+                        <button className="approve" onClick={() => handleApprove(c.contentId)}>✓</button>
+                    )}
+                    <button className="reject" onClick={() => handleReject(c.contentId)}>✗</button>
                 </div>
             </div>
         ))
