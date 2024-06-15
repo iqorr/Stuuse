@@ -1,9 +1,9 @@
-.admin-panel {
+.admin-panel-body {
     font-family: 'Open Sans', sans-serif;
     padding: 80px;
-    width: 100%;
+    width: 100%; /* Szerokość ustawiona na 100% */
     background-color: #DFF5FF;
-    margin: 0;
+    margin: 0 auto; /* Automatyczne marginesy po obu stronach */
 }
 
 .admin-header {
@@ -28,10 +28,12 @@
 
 .admin-section {
     background-color: #59B8FC;
-    margin: 20px;
+    margin: 20px auto; /* Margines auto, aby wyśrodkować sekcję */
     padding: 10px;
     border-radius: 10px;
-    width: 90%;
+    width: 70%; /* Procentowa szerokość dla responsywności */
+    max-width: 960px; /* Maksymalna szerokość, aby sekcja nie była zbyt szeroka na dużych ekranach */
+    box-sizing: border-box; /* Uwzględnia padding i border w szerokości */
 }
 
 .admin-section h2 {
@@ -70,15 +72,15 @@
     padding: 10px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column; /* Keeps elements stacked vertically */
+    align-items: center; /* Centers the child elements horizontally */
+    justify-content: center; /* Centers the child elements vertically */
     width: 30%;
-    height: 180px;
+    height: 200px;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
 }
-
 
 .user-info, .event-info, .hour-info {
     flex-grow: 1;
@@ -92,22 +94,19 @@
     width: 100%;
     color: white;
 }
+
 .hour-info2 {
-    flex-grow: 1;
-    flex-basis: 100%;
-    margin-bottom: 10px;
+    width: 100%; /* Full width to utilize space */
+    text-align: center; /* Center the text */
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
     color: white;
-
+    margin-bottom: 20px; /* Extra space above the buttons */
 }
+
 .actions {
-    gap: 10px;
-    flex-basis: 100%;
-    justify-content: end;
-    width: 100%;
-    float: right;
+    display: flex;
+    width: 170px; /* Take full width to maintain alignment */
 }
 
 .content-card > .actions {
@@ -120,6 +119,7 @@
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
+    margin: auto;
 }
 
 .approve {
@@ -137,6 +137,52 @@
 
 /* Responsive Styles */
 
+
+@media (min-width: 992px) {
+    .admin-panel {
+        max-width: 1200px;
+        margin: 0 auto; /* Centrowanie panelu admina */
+    }
+
+    .admin-section {
+        margin: 20px auto; /* Centrowanie każdej sekcji */
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-panel-body {
+        padding: 20px; /* Mniejszy padding na mniejszych ekranach */
+    }
+
+    .admin-section {
+        width: 90%; /* Większa szerokość sekcji na mniejszych ekranach */
+    }
+
+    .card-1, .card-2, .card-3 {
+        width: 100%; /* Pełna szerokość dla kart na mniejszych ekranach */
+    }
+}
+
+@media (max-width: 600px) {
+    .approve, .reject {
+        font-size: 20px; /* Mniejsza czcionka dla przycisków */
+        padding: 5px 10px; /* Mniejszy padding dla przycisków */
+    }
+}
+
+@media (max-width: 768px) {
+    .free-hour-card {
+        width: 100%; /* Szerokość karty na mniejszych ekranach */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-section {
+        flex-direction: column; /* Ustawienie kolumny na mniejszych ekranach */
+    }
+}
 
 @media (min-width: 600px) {
     .content-card {
@@ -177,6 +223,7 @@
         padding: 20px;
     }
 }
+
 @media (max-width: 768px) {
     .card-1, .card-2, .card-3 {
         width: 45%; /* Zmniejszenie szerokości dla mniejszych ekranów */
