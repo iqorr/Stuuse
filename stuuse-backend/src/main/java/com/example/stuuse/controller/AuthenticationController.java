@@ -37,7 +37,8 @@ public class AuthenticationController {
         final String jwt = jwtUtil.generateToken(userDetails);
         User user = userService.getUserByLogin(userDetails.getUsername());
         Long userId = user.getUserId();
+        String typeOfUser = String.valueOf(user.getAccType());
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, userId));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userId, typeOfUser));
     }
 }
