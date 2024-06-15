@@ -17,7 +17,7 @@ function Offers({ typeOfContent }) {
                 return response.json();
             })
             .then(data => {
-                const offers = data.filter(offer => offer.typeOfContent === typeOfContent).map(offer => ({
+                const offers = data.filter(offer => offer.typeOfContent === typeOfContent && offer.verified).map(offer => ({
                     ...offer,
                     lastRated: localStorage.getItem(`lastRated_${offer.contentId}`) || null
                 }));

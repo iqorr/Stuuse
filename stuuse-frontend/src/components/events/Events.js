@@ -18,7 +18,7 @@ function Events({ typeOfContent }) {
                 return response.json();
             })
             .then(data => {
-                const events = data.filter(event => event.typeOfContent === typeOfContent).map(event => ({
+                const events = data.filter(event => event.typeOfContent === typeOfContent && event.verified).map(event => ({
                     ...event,
                     lastRated: localStorage.getItem(`lastRated_${event.contentId}`) || null
                 }));

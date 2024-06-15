@@ -15,7 +15,7 @@ function FreeHours({ typeOfFreeHour }) {
                 return response.json();
             })
             .then(data => {
-                const rectorHours = data.filter(hour => hour.typeOfFreeHour === typeOfFreeHour);
+                const rectorHours = data.filter(hour => hour.typeOfFreeHour === typeOfFreeHour && hour.verified);
                 setFreeHours(rectorHours);
                 setIsLoading(false);
             })
