@@ -8,6 +8,7 @@ const Logout = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
+        localStorage.removeItem('typeOfUser');
         navigate('/login');
     };
 
