@@ -76,6 +76,7 @@ const FreeHoursToAccept = ({ typeOfFreeHour }) => {
             });
     };
 
+
     const unverifiedFreeHours = freeHours.filter(hour => hour.typeOfFreeHour === typeOfFreeHour);
 
     return (

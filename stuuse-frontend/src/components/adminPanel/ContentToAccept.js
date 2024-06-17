@@ -76,6 +76,7 @@ const ContentToAccept = () => {
             });
     };
 
+
     return (
         content.map(c => (
             <div className="content-card">
