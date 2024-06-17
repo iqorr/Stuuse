@@ -74,10 +74,9 @@ const Profile = () => {
                 );
             case 'Administrator':
                 return (
-                    <div></div>
-                    // <Link to="/admin">
-                    //     <Button text="ZARZĄDZAJ" />
-                    // </Link>
+                    <Link to="/admin">
+                        <Button text="ZARZĄDZAJ" />
+                    </Link>
                 );
             case 'Firma trzecia':
                 return (

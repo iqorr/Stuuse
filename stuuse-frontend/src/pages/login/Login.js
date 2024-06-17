@@ -37,6 +37,7 @@ const Login = () => {
           const data = await response.json();
           localStorage.setItem('token', data.jwt);
           localStorage.setItem('userId', data.userId);
+          localStorage.setItem('typeOfUser', data.typeOfUser);
           navigate('/profile');
         } else {
           alert('Nieprawidłowy login lub hasło');

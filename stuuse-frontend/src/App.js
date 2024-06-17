@@ -8,8 +8,7 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import AddContent from "./pages/addContent/AddContent.js";
 import AddFreeHour from "./pages/addFreeHour/AddFreeHour";
 import PermissionsRoute from "./components/routes/PermissionsRoute";
-
-
+import AdminPanel from "./pages/administrationPanel/AdminPanel";
 
 function App() {
     return (
@@ -18,11 +17,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/registration" element={<Registration />} />
-
                 <Route element={<PrivateRoute />}>
                     <Route path="/profile" element={<Profile />} />
                     <Route element={<PermissionsRoute allowedRoles={['ADMINISTRATOR']} />}>
-                        {/*<Route path="/admin" element={<AdminPanel />} />*/}
+                        <Route path="/admin" element={<AdminPanel />} />
                     </Route>
                     <Route element={<PermissionsRoute allowedRoles={['PL_EMPLOYEE']} />}>
                         <Route path="/addContent" element={<AddContent />} />
@@ -32,7 +30,6 @@ function App() {
                         <Route path="/addContent" element={<AddContent />} />
                     </Route>
                 </Route>
-
             </Routes>
         </Router>
     );

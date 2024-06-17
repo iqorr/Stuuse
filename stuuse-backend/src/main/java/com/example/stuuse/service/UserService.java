@@ -50,7 +50,7 @@ public class UserService {
         existingUser.setAccType(user.getAccType());
         existingUser.setVerified(user.isVerified());
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            existingUser.setPassword(user.getPassword());
         }
         return userRepository.save(existingUser);
     }
