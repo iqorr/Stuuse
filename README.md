@@ -47,9 +47,9 @@ Run the XAMPP control panel and start the following services:
 3. Add sample data to the tables by executing the following SQL code:
 ```sql
 -- Tworzenie tabel
-create table content (content_id bigint not null auto_increment, address varchar(255), description varchar(255), discount_code varchar(255), dislikes integer default 0, image varchar(255), is_verified boolean default false, likes integer default 0, title varchar(255), type_of_content tinyint check (type_of_content between 0 and 1), primary key (content_id))
-create table free_hours (hour_id bigint not null auto_increment, date datetime(6), duration varchar(255), faculty varchar(255), is_verified boolean default false, type_of_free_hour tinyint check (type_of_free_hour between 0 and 1), primary key (hour_id))
-create table users (user_id bigint not null auto_increment, account_type tinyint check (account_type between 0 and 2), email varchar(255), is_verified boolean default false, lastname varchar(255), login varchar(255), name varchar(255), password varchar(255), primary key (user_id))
+create table content (content_id bigint not null auto_increment, address varchar(255), description varchar(255), discount_code varchar(255), dislikes integer default 0, image varchar(255), is_verified boolean default false, likes integer default 0, title varchar(255), type_of_content tinyint check (type_of_content between 0 and 1), primary key (content_id));
+create table free_hours (hour_id bigint not null auto_increment, date datetime(6), duration varchar(255), faculty varchar(255), is_verified boolean default false, type_of_free_hour tinyint check (type_of_free_hour between 0 and 1), primary key (hour_id));
+create table users (user_id bigint not null auto_increment, account_type tinyint check (account_type between 0 and 2), email varchar(255), is_verified boolean default false, lastname varchar(255), login varchar(255), name varchar(255), password varchar(255), primary key (user_id));
 
 -- Dodawanie godzin rektorskich
 INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-03-16', '11:00 - 12:00', NULL, 0, 1);
@@ -85,7 +85,7 @@ INSERT INTO content(title, address, description, image, discount_code, type_of_c
             'https://yapa.art.pl/2024/wp-content/uploads/2024/02/Yapa-2024-pop-ma%C5%82y.jpg', NULL, 0, 0);
 
 -- Dodawanie ofert specjalnych
-INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verifed) VALUES('KFC', 'al. Jana Pawła II 28, 93-570 Łódź',
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('KFC', 'al. Jana Pawła II 28, 93-570 Łódź',
                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://galeriamazovia.com.pl/wp-content/uploads/2024/03/900x900-wings.jpg', 'ABCDEF', 1, 1);
 INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('McDonalds', 'al. Adama Mickiewicza 5, 90-443 Łódź',
                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://pliki.horecatrends.pl/i/02/42/57/024257_r2_940.jpg', 'ABCDEF', 1, 1);
