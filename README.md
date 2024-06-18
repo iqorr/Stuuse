@@ -65,14 +65,14 @@ INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) 
 INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(2, 'Jan', 'Kowalski', 'admin@stuuse.pl', 'admin', '$2a$12$3aKufGWc512iFbnNtSd/PeqUSS3R8NSEK7rszUY7.NmiPjCTQmxPW', 1);
 -- Haslo do uzytkownika admin: admin
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(0, 'Adam', 'Nowak', 'pl_employee@stuuse.pl', 'employee1', '$2a$12$rNH9vWlqeSWSgi.yhtjzrO5BgTMl1pzhK4AeMjMTaI/VDAtvMoljy', 1);
--- Haslo do uzytkownika employee1: Employee1
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(0, 'Adam', 'Nowak', 'pl_employee@stuuse.pl', 'employee1', '$2a$12$4y5Ox5JaKSzlzFeW5U1zv.HtvXFezXBpbelzusJm0ujmq1.TerF9W', 1);
+-- Haslo do uzytkownika employee1: employee
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Kacper', 'Nowacki', 'third_party_company@stuuse.pl', 'company1', '2a$12$wo0JdjtFGfkeuuNmCxDNI.ECRsJ1FrP9jEMEqb9U2AtzKTgy9lijO', 1);
--- Haslo do uzytkownika company1: Company1
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Kacper', 'Nowacki', 'third_party_company@stuuse.pl', 'company1', '$2a$12$XqoLTsrVRXs1Syq3l2De1..N1UdCg3wap55CQIia5DjvFAU8.GS86', 1);
+-- Haslo do uzytkownika company1: company
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Adam', 'Adamowski', 'third_party_company2@stuuse.pl', 'company2', '$2a$12$6WUe9Rkgx9qXDmf2XS3YcevAdjWWxU59thWJAognO3WlJddc3KWxC', 0);
--- Haslo do uzytkownika company2: Company2
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Adam', 'Adamowski', 'third_party_company2@stuuse.pl', 'company2', '$2a$12$XqoLTsrVRXs1Syq3l2De1..N1UdCg3wap55CQIia5DjvFAU8.GS86', 0);
+-- Haslo do uzytkownika company2: company
 
 -- Dodawanie wydarzen
 INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
