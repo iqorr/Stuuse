@@ -22,12 +22,12 @@ function App() {
                     <Route element={<PermissionsRoute allowedRoles={['ADMINISTRATOR']} />}>
                         <Route path="/admin" element={<AdminPanel />} />
                     </Route>
-                    <Route element={<PermissionsRoute allowedRoles={['PL_EMPLOYEE']} />}>
+                    <Route element={<PermissionsRoute allowedRoles={['THIRD_PARTY_COMPANY', 'PL_EMPLOYEE']} />}>
                         <Route path="/addContent" element={<AddContent />} />
-                        <Route path="/addFreeHour" element={<AddFreeHour />} />
                     </Route>
-                    <Route element={<PermissionsRoute allowedRoles={['THIRD_PARTY_COMPANY']} />}>
-                        <Route path="/addContent" element={<AddContent />} />
+                    <Route element={<PermissionsRoute allowedRoles={['PL_EMPLOYEE']} />}>
+                        {/*<Route path="/addContent" element={<AddContent />} />*/}
+                        <Route path="/addFreeHour" element={<AddFreeHour />} />
                     </Route>
                 </Route>
             </Routes>
