@@ -47,48 +47,48 @@ Run the XAMPP control panel and start the following services:
 3. Add sample data to the tables by executing the following SQL code:
 ```sql
 -- Tworzenie tabel
-CREATE TABLE content (content_id bigint NOT NULL auto_increment, address VARCHAR(255), description VARCHAR(255), discount_code VARCHAR(255), dislikes INTEGER DEFAULT 0, image VARCHAR(255), is_verified BOOLEAN DEFAULT false, likes INTEGER DEFAULT 0, title VARCHAR(255), type_of_content tinyint CHECK (type_of_content BETWEEN 0 AND 1), PRIMARY KEY (content_id));
-CREATE TABLE free_hours (hour_id bigint NOT NULL auto_increment, date DATETIME(6), duration VARCHAR(255), faculty VARCHAR(255), is_verified BOOLEAN DEFAULT FALSE, type_of_free_hour tinyint CHECK (type_of_free_hour BETWEEN 0 AND 1), PRIMARY KEY (hour_id));
-CREATE TABLE users (user_id bigint NOT NULL auto_increment, account_type tinyint CHECK (account_type BETWEEN 0 AND 2), email VARCHAR(255), is_verified BOOLEAN DEFAULT false, lastname VARCHAR(255), login VARCHAR(255), name VARCHAR(255), password VARCHAR(255), PRIMARY KEY (user_id))
+create table content (content_id bigint not null auto_increment, address varchar(255), description varchar(255), discount_code varchar(255), dislikes integer default 0, image varchar(255), is_verified boolean default false, likes integer default 0, title varchar(255), type_of_content tinyint check (type_of_content between 0 and 1), primary key (content_id));
+create table free_hours (hour_id bigint not null auto_increment, date datetime(6), duration varchar(255), faculty varchar(255), is_verified boolean default false, type_of_free_hour tinyint check (type_of_free_hour between 0 and 1), primary key (hour_id));
+create table users (user_id bigint not null auto_increment, account_type tinyint check (account_type between 0 and 2), email varchar(255), is_verified boolean default false, lastname varchar(255), login varchar(255), name varchar(255), password varchar(255), primary key (user_id));
 
 -- Dodawanie godzin rektorskich
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-03-16', '11:00 - 12:00', NULL, 0);
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-03-21', '12:00 - 14:00', NULL, 0);
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-05-27', '10:00 - 16:00', NULL, 0);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-03-16', '11:00 - 12:00', NULL, 0, 1);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-03-21', '12:00 - 14:00', NULL, 0, 1);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-05-27', '10:00 - 16:00', NULL, 0, 1);
 
 -- Dodawanie godzin dziekanskich
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-03-21', '11:00 - 14:00', 'WEEIA', 1);
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-04-12', '10:00 - 12:00', 'FTIMS', 1);
-INSERT INTO free_hours(date, duration, faculty, type_of_free_hour) VALUES('2024-05-22', '12:00 - 16:00', 'WEEIA', 1);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-03-21', '11:00 - 14:00', 'WEEIA', 1, 1);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-04-12', '10:00 - 12:00', 'FTIMS', 1, 1);
+INSERT INTO free_hours(date, duration, faculty, type_of_free_hour, is_verified) VALUES('2024-05-22', '12:00 - 16:00', 'WEEIA', 1, 1);
 
 -- Dodawanie uzytkownikow
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(2, 'Jan', 'Kowalski', 'admin@stuuse.pl', 'admin', '$2a$12$4azcmZl.vSa8cnuZ224wsulg3fSxmYVVnJ1KRc.6c8KiTkJVG6KNq', 1);
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(2, 'Jan', 'Kowalski', 'admin@stuuse.pl', 'admin', '$2a$12$3aKufGWc512iFbnNtSd/PeqUSS3R8NSEK7rszUY7.NmiPjCTQmxPW', 1);
 -- Haslo do uzytkownika admin: admin
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(0, 'Adam', 'Nowak', 'pl_employee@stuuse.pl', 'employee1', '$2a$12$OMcTGUU9fJu8nsKDM6KAZOuawOZ9wa7zM/kAIOgFnpTlC.xEwcVtq', 1);
--- Haslo do uzytkownika employee1: Employee1
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(0, 'Adam', 'Nowak', 'pl_employee@stuuse.pl', 'employee1', '$2a$12$4y5Ox5JaKSzlzFeW5U1zv.HtvXFezXBpbelzusJm0ujmq1.TerF9W', 1);
+-- Haslo do uzytkownika employee1: employee
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Kacper', 'Nowacki', 'third_party_company@stuuse.pl', 'company1', '$2a$12$1XU9cBkrxY1a4wAfEMlMDOdy8wj4Fcv.AnLeFPMD8.aOagDMMsdD2', 1);
--- Haslo do uzytkownika company1: Company1
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Kacper', 'Nowacki', 'third_party_company@stuuse.pl', 'company1', '$2a$12$XqoLTsrVRXs1Syq3l2De1..N1UdCg3wap55CQIia5DjvFAU8.GS86', 1);
+-- Haslo do uzytkownika company1: company
 
-INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Adam', 'Adamowski', 'third_party_company2@stuuse.pl', 'company2', '$2a$12$wwtzMh9kQ.auRnZxRNnszu31ZLcygzE73l/5wfJLxb5I.gPb93UHq', 0);
--- Haslo do uzytkownika company2: Company2
+INSERT INTO users(account_type, name, lastname, email, login, password, is_verified) VALUES(1, 'Adam', 'Adamowski', 'third_party_company2@stuuse.pl', 'company2', '$2a$12$XqoLTsrVRXs1Syq3l2De1..N1UdCg3wap55CQIia5DjvFAU8.GS86', 0);
+-- Haslo do uzytkownika company2: company
 
 -- Dodawanie wydarzen
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpR1wKQwpY-5AwteWx6gqsSMBXT-iq07pZypp2PqJ_zw&s', NULL, 0);
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('Yapa Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'https://yapa.art.pl/2024/wp-content/uploads/2024/02/Yapa-2024-pop-ma%C5%82y.jpg', NULL, 0);
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpR1wKQwpY-5AwteWx6gqsSMBXT-iq07pZypp2PqJ_zw&s', NULL, 0);
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('Yapa Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'https://yapa.art.pl/2024/wp-content/uploads/2024/02/Yapa-2024-pop-ma%C5%82y.jpg', NULL, 0);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpR1wKQwpY-5AwteWx6gqsSMBXT-iq07pZypp2PqJ_zw&s', NULL, 0, 1);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('Yapa Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'https://yapa.art.pl/2024/wp-content/uploads/2024/02/Yapa-2024-pop-ma%C5%82y.jpg', NULL, 0, 1);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('Juwenalia Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpR1wKQwpY-5AwteWx6gqsSMBXT-iq07pZypp2PqJ_zw&s', NULL, 0, 1);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('Yapa Łódź', 'Rolna 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'https://yapa.art.pl/2024/wp-content/uploads/2024/02/Yapa-2024-pop-ma%C5%82y.jpg', NULL, 0, 0);
 
 -- Dodawanie ofert specjalnych
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('KFC', 'al. Jana Pawła II 28, 93-570 Łódź',
-                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://galeriamazovia.com.pl/wp-content/uploads/2024/03/900x900-wings.jpg', 'ABCDEF', 1);
-INSERT INTO content(title, address, description, image, discount_code, type_of_content) VALUES('McDonalds', 'al. Adama Mickiewicza 5, 90-443 Łódź',
-                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://pliki.horecatrends.pl/i/02/42/57/024257_r2_940.jpg', 'ABCDEF', 1);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('KFC', 'al. Jana Pawła II 28, 93-570 Łódź',
+                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://galeriamazovia.com.pl/wp-content/uploads/2024/03/900x900-wings.jpg', 'ABCDEF', 1, 1);
+INSERT INTO content(title, address, description, image, discount_code, type_of_content, is_verified) VALUES('McDonalds', 'al. Adama Mickiewicza 5, 90-443 Łódź',
+                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum lacus eget dolor lobortis porta.', 'https://pliki.horecatrends.pl/i/02/42/57/024257_r2_940.jpg', 'ABCDEF', 1, 1);
 ```
 
 ## Run backend application
